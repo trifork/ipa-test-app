@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Static Template</title>
+        <script src="https://cdn.jsdelivr.net/npm/fhirclient/build/fhir-client.js"></script>
+    </head>
+    <body>
+        <script>
+            const iss = "https://fhir.epic.com/interconnect-fhir-oauth/api/FHIR/R4";
+            FHIR.oauth2.authorize({
+              clientId: "0093a401-7b9a-43d6-8c68-32d52d5c8dd2",
+              // The scopes that you request from the EHR
+              scope: [
+                "launch",           // Get the launch context in EHR launch mode
+                "openid fhirUser",  // Get the current user
+                "patient/*.read",   // Read patient data
+                "offline_access"
+              ].join(" "),
+              redirectUri: "https://jrg5bo.csb.app/browser/ehr_launch/index.html"
+            });
+        </script>
+    </body>
+</html>

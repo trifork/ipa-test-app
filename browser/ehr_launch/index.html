@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>EHR Launch Results</title>
+        <!--
+        <link rel="stylesheet" href="../style.css">
+        -->
+        <style>
+            summary > h4 {
+                display: inline-block;
+                margin: 0;
+            }
+        </style>
+        <script src="https://cdn.jsdelivr.net/npm/fhirclient/build/fhir-client.js"></script>
+        <script src="../app.js"></script>
+    </head>
+    <body>
+        <main>
+            <section id="current-patient">
+                <details>
+                    <summary>
+                        <h4>Current Patient</h4>
+                    </summary>
+                    <pre id="patient"></pre>
+                </details>
+            </section>
+            <section id="current-user">
+                <details>
+                    <summary>
+                        <h4>Current User</h4>
+                    </summary>
+                    <pre id="user"></pre>
+                </details>
+            </section>
+            <section id="current-encounter">
+                <details>
+                    <summary>
+                        <h4>Current Encounter</h4>
+                    </summary>
+                    <pre id="encounter"></pre>
+                </details>
+            </section>
+            <section id="conformance-statement">
+                <details>
+                    <summary>
+                        <h4>Conformance Statement</h4>
+                    </summary>
+                    <pre id="metadata">Loading...</pre>
+                </details>
+            </section>
+            <section id="default-docref">
+                <details>
+                    <summary>
+                        <h4>Default $docref</h4>
+                    </summary>
+                    <pre id="docref">Loading...</pre>
+                </details>
+            </section>
+            <section id="ips-docref">
+                <details>
+                    <summary>
+                        <h4>IPS Document Bundle</h4>
+                    </summary>
+                    <pre id="ips">Loading...</pre>
+                </details>
+            </section>
+            <section id="error-container">
+                <h4>Errors</h4>
+                <pre id="error"></pre>
+            </section>
+        </main>
+        <script type="text/javascript">
+            FHIR.oauth2.ready().then(function(client) {
+                var app = new App(client);
+//                App.prototype.setLabel("metadata", "Conformance Statement");
+                app.renderContext()
+                .then(() => {
+                    console.log("Accessing metadata...");
+                    app.request("metadata", undefined, "metadata")
+                    .catch((error) => {
+                        console.error(error);
+                        createAppender("error")(error);
+                        return error;
+                    });
+                    const patient = app.patient;
+                    app.request(`/DocumentReference/$docref?patient=${patient.id}`, undefined, "docref");
+                    app.request(`/DocumentReference/$docref?patient=${patient.id}&type=60591-5`, undefined, "ips");
+                });
+            }).catch(createAppender("error"));
+            
+        </script>
+    </body>
+</html>

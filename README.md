@@ -1,2 +1,2 @@
-# ipa-test-app
-Created with CodeSandbox
+# client-js-examples
+Contains examples of how to use the client-js library

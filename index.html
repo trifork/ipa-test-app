@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>FHIR Client Examples</title>
+    <style>
+      dl {
+        margin-top: 0.25em;
+      }
+      dt, dd {
+        display: inline;
+      }
+      dt {
+        font-weight: bold;
+        margin-right: 1em;
+      }
+      dt::before {
+        content: "\a";
+        white-space: pre;
+        display: block;
+        margin: 0;
+        padding: 0;
+        font-size: 0;
+        line-height: 0;
+      }
+      dt::after {
+        content: ":"
+      }
+      dd {
+        margin-left: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>IPA Example app</h1>
+    <hr/>
+    <!--
+    <h2>Default</h2>
+    <ul>
+      <li><a target="_blank" href="browser/ehr_launch/launch.html?launch=eyJhIjoiMSIsImciOiIxIn0&iss=https%3A%2F%2Flaunch.smarthealthit.org%2Fv%2Fr3%2Ffhir">EHR Launch</a></li>
+      <li><a target="_blank" href="browser/standalone_launch/launch.html?iss=https://launch.smarthealthit.org/v/r3/sim/eyJoIjoiMSJ9/fhir">Provider Standalone Launch</a></li>
+      <li><a target="_blank" href="browser/standalone_launch/launch.html?iss=https://launch.smarthealthit.org/v/r3/sim/eyJrIjoiMSIsImIiOiJzbWFydC03Nzc3NzAxIn0/fhir">Patient Standalone Launch</a></li>
+      <li><a target="_blank" href="browser/medications/index.html">Fetch Patient Medications</a></li>
+      <li><a target="_blank" href="browser/image/index.html">Render image document</a>
+      <li><a target="_blank" href="browser/pdf/index.html">Render PDF document</a>
+      <li><a target="_blank" href="browser/multi_config/launch.html">Multiple launch configurations</a>
+    </ul>
+    -->
+
+    <h3>Epic</h3>
+    <ul>
+      <li><a target="_blank" href="browser/standalone_launch/launch.html">IPA Standalone Launch (fhir.epic.com)</a></li>
+    </ul>
+    <small>
+      <p>Also configured to fhir.epic.com:</p>
+      <dl>
+        <dt>App ID</dt>
+        <dd>92cfdd34-22f8-4557-b7c2-67a0ad7fe081</dd>
+        <dt>Launch URL</dt>
+        <dd>https://jrg5bo.csb.app/browser/ehr_launch/launch_epic_practitioner.html</dd>
+      </dl>
+      <dl>
+        <dt>App ID</dt>
+        <dd>0093a401-7b9a-43d6-8c68-32d52d5c8dd2</dd>
+        <dt>Launch URL</dt>
+        <dd>https://jrg5bo.csb.app/browser/ehr_launch/launch_epic_patient.html</dd>
+      </dl>
+    </small>
+    <h3>SMART Health sandbox</h3>
+    <ul>
+      <li><a target="_blank" href="browser/standalone_launch/launch.html?iss=https://launch.smarthealthit.org/v/r3/sim/eyJrIjoiMSIsImIiOiJzbWFydC03Nzc3NzAxIn0/fhir">Patient Standalone Launch (SMART Health)</a></li>
+      <li><a target="_blank" href="browser/standalone_launch/launch.html?iss=https://launch.smarthealthit.org/v/r3/sim/eyJoIjoiMSJ9/fhir">Provider Standalone Launch (SMART Health)</a></li>
+      <li><a target="_blank" href="browser/ehr_launch/launch.html?launch=eyJhIjoiMSIsImciOiIxIn0&iss=https%3A%2F%2Flaunch.smarthealthit.org%2Fv%2Fr3%2Ffhir">Simulated EHR Launch</a></li>
+    </ul>
+  </body>
+</html>
