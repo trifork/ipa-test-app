@@ -79,15 +79,15 @@
                 app.renderContext()
                 .then(() => {
                     console.log("Accessing metadata...");
-                    app.request("metadata", undefined, "metadata")
+                    app.request("fhir/metadata", undefined, "metadata")
                     .catch((error) => {
                         console.error(error);
                         createAppender("error")(error);
                         return error;
                     });
                     const patient = app.patient;
-                    app.request(`/DocumentReference/$docref?patient=${patient.id}`, undefined, "docref");
-                    app.request(`/DocumentReference/$docref?patient=${patient.id}&type=60591-5`, undefined, "ips");
+                    app.request(`fhir/DocumentReference/$docref?patient=${patient.id}`, undefined, "docref");
+                    app.request(`fhir/DocumentReference/$docref?patient=${patient.id}&type=60591-5`, undefined, "ips");
                 });
             }).catch(createAppender("error"));
             
