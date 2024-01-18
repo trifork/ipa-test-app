@@ -9,25 +9,39 @@
     </head>
     <body>
         <script>
+            // navigator.registerProtocolHandler('web+apoteket-app-mock', 'http://localhost:8000/standalone_launch/launch.html?q=%s', 'Danish IPS');
+            // navigator.registerProtocolHandler('web+apoteket-app-mock', 'http://localhost:8000/standalone_launch/launch.html?q=%s', 'Danish IPS');
+
             FHIR.oauth2.authorize({
 
                 // The client_id that you should have obtained after registering a client at
                 // the EHR.
-                clientId: "0093a401-7b9a-43d6-8c68-32d52d5c8dd2",
+                clientId: "mlapp_mock",
+
 
                 // The scopes that you request from the EHR
                 scope: [
+                    /*
                     "launch",           // Get the launch context in EHR launch mode
                     "launch/patient",   // Get the current patient in standalone launch mode
                     "launch/encounter", // Get the current encounter in standalone launch mode
                     "openid fhirUser",  // Get the current user
                     "patient/*.read"    // Read patient data
-                 ].join(" "),
+                    */
+                    "openid",
+                    "profile",
+                    "sosi-sts",
+                    "fmk",
+                    "ddv",
+                    "minlog"
+                ].join(" "),
 
                 // Having this option means that it makes a standalone launch. This is to make
                 // this demo usable out of the box, but it can still to EHR launch if "iss" and
                 // "launch" url parameters are passed.
-                iss: "https://fhir.epic.com/interconnect-fhir-oauth/api/FHIR/R4",
+                // iss: "https://gravitate-ips.gravitate.tcs.trifork.dev/fhir",
+                // iss: "http://10.67.0.221:8080",
+                iss: "https://gravitate-ips.gravitate.tcs.trifork.dev",
 
                 // Typically, if your redirectUri points to the root of the current directory
                 // (where the launchUri is), you can omit this option because the default
@@ -35,7 +49,9 @@
                 // indexes so "." and "./" will not automatically map to the "index.html" file
                 // in that directory.
                 // redirectUri: "index.html"
-                redirectUri: "https://jrg5bo.csb.app/browser/standalone_launch/index.html"                
+                // redirectUri: "file:///Users/mikael/GitHub/ipa-test-app/browser/standalone_launch/index.html"                
+                // redirectUri: "index.html"
+                redirectUri: "file:///Users/mikael/GitHub/ipa-test-app/browser/standalone_launch/index.html"
             });
         </script>
     </body>
