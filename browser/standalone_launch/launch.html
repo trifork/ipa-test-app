@@ -18,7 +18,7 @@
                 // the EHR.
                 clientId: "mlapp_mock",
 
-
+                patientId: "1234",
                 // The scopes that you request from the EHR
                 scope: [
                     /*
@@ -35,13 +35,14 @@
                     "ddv",
                     "minlog"
                 ].join(" "),
-
+                patientId: "1234",
                 // Having this option means that it makes a standalone launch. This is to make
                 // this demo usable out of the box, but it can still to EHR launch if "iss" and
                 // "launch" url parameters are passed.
                 // iss: "https://gravitate-ips.gravitate.tcs.trifork.dev/fhir",
                 // iss: "http://10.67.0.221:8080",
-                iss: "https://gravitate-ips.gravitate.tcs.trifork.dev",
+                iss: "https://gravitate-ips.gravitate.tcs.trifork.dev/fhir",
+                //iss: "http://localhost:9090/fhir",
 
                 // Typically, if your redirectUri points to the root of the current directory
                 // (where the launchUri is), you can omit this option because the default
